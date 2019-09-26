@@ -4,6 +4,7 @@
 
 var express = require('express')
 var router = express.Router()
+const db = require('../modules/db')
 
 
 
@@ -13,10 +14,9 @@ var router = express.Router()
 
 // Return a user
 router.get('/', function (req, res) {
-    res.json({
-        firstName: 'John',
-        lastName: 'Doe',
-    });
+    db.db.collection('users').findOne().then((user) => {
+        res.json(user)
+    })
 })
 
 

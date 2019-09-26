@@ -2,8 +2,8 @@
  * Load modules
  */
 
-const express = require('express');
-const usersRouter = require('../routes/users');
+const express = require('express')
+const usersRouter = require('../routes/users')
 
 
 /**
@@ -11,9 +11,9 @@ const usersRouter = require('../routes/users');
  */
 
 // Global variables
-const host = 'localhost';
-const port = 8080;
-const app = express();
+const host = process.env.SERVER_HOST
+const port = process.env.SERVER_PORT
+const app = express()
 
 
 
@@ -22,14 +22,14 @@ const app = express();
  */
 
 // Configure routes
-app.use('/users', usersRouter);
+app.use('/users', usersRouter)
 
 // Start server
 var start = function (callback) {
     app.listen(port, host, () => {
-        console.info(`[SERVER] Listening on http://${host}:${port}`);
-        if (callback) callback(null);
-    });
+        console.info(`[Server] Listening on http://${host}:${port}`)
+        if (callback) callback(null)
+    })
 };
 
 
@@ -37,4 +37,4 @@ var start = function (callback) {
 /**
  * Exports
  */
-exports.start = start;
+exports.start = start
