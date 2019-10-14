@@ -4,6 +4,8 @@
 
 const express = require('express')
 const usersRouter = require('../routes/users')
+const galleryRouter = require('../routes/gallery')
+
 
 
 /**
@@ -12,7 +14,7 @@ const usersRouter = require('../routes/users')
 
 // Global variables
 const host = process.env.SERVER_HOST
-const port = process.env.SERVER_PORT
+const port = process.env.PORT
 const app = express()
 
 
@@ -23,11 +25,13 @@ const app = express()
 
 // Configure routes
 app.use('/users', usersRouter)
+app.use('/gallery', galleryRouter)
 
 // Start server
 var start = function (callback) {
-    app.listen(port, host, () => {
-        console.info(`[Server] Listening on http://${host}:${port}`)
+    app.listen(port,  () => {
+        //console.info(`[Server] Listening on http://${host}:${port}`);
+        console.info(`[Server] Listening on ${port}`)
         if (callback) callback(null)
     })
 };
