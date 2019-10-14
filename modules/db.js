@@ -42,3 +42,4 @@ let connect = () => {
  */
 exports.connect = connect
 exports.db = null // db will be set after connected
+exports.ObjectID = mongodb.ObjectID;

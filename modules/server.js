@@ -3,9 +3,11 @@
  */
 
 const express = require('express')
+const bodyParser = require('body-parser')
 const usersRouter = require('../routes/users')
 const galleryRouter = require('../routes/gallery')
 
+const quotesRouter = require('../routes/quotes')
 
 
 /**
@@ -23,9 +25,13 @@ const app = express()
  * Configuration
  */
 
+// Configure server
+app.use(bodyParser.json());
+
 // Configure routes
 app.use('/users', usersRouter)
 app.use('/gallery', galleryRouter)
+app.use('/quotes', quotesRouter)
 
 // Start server
 var start = function (callback) {
