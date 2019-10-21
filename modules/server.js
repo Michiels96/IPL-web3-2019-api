@@ -26,7 +26,9 @@ const app = express()
  */
 
 // Configure server
-app.use(bodyParser.json());
+
+// limit : it controls the maximum request body size. 
+app.use(bodyParser.json({limit:"1.1MB"}));
 
 // Configure routes
 app.use('/users', usersRouter)
