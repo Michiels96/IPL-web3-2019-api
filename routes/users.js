@@ -23,35 +23,10 @@ router.get("/", function(req, res) {
     });
 });
 
-
-router.post("/me", function(req, res, next) {
-  db.db
-    .collection("users")
-    .findOne({ login: req.body.username })
-    .then(user => {
-      console.log(user);
-      if (user) {
-        //compare password. Improve this later with hashed password!
-        if(user.password === req.body.password)
-          {          
-          res.json({ success: true, user: user });
-          }
-        else{
-          console.log("bad password");
-          res.json({ success: false, error: "bad email/password" });
-        }
-     
-      } else {
-        console.log("no user");
-        res.json({ success: false, error: "bad email/password" });
-      }
-    });
-});
-
 // To use it in Production, don't forget to set-up a new environment variable
 const jwtSecret = process.env.JWT_SECRET;
 
-router.post("/me2", function(req, res, next) {
+router.post("/me", function(req, res, next) {
   db.db
     .collection("users")
     .findOne({ login: req.body.username })
